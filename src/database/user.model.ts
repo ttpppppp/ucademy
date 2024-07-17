@@ -9,8 +9,8 @@ export interface IUser extends Document {
     avatar : string;
     status : EuserStatus
     role : EuserRole
-    course : Schema.Types.ObjectId[];
-    createAt : Date
+    courses : Schema.Types.ObjectId[];
+    created_at : Date
 }
 
 const userSchema  = new Schema<IUser>({
@@ -39,13 +39,13 @@ const userSchema  = new Schema<IUser>({
     avatar : {
         type : String
     },
-    course:[
+    courses:[
         {
             type : Schema.Types.ObjectId,
             ref : "Course"
         }
     ],
-    createAt : {
+    created_at : {
         type : Date,
         default : Date.now
     },
