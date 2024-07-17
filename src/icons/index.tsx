@@ -1,0 +1,9 @@
+export {default as IconPlay} from "@/icons/IconPlay";
+export {default as IconExplore} from "@/icons/IconExprore";
+export {default as IconStudy} from "@/icons/IconStudy";
+export {default as IconUser} from "@/icons/IconUser";
+export {default as IconComment} from "@/icons/IconComment";
+export {default as IconOrder} from "@/icons/IconOrder";
+export {default as IconStar} from "@/icons/IconStar";
+export {default as IconEye} from "@/icons/IconEye";
+export {default as IconClock} from "@/icons/IconClock";
