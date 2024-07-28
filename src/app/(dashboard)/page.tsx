@@ -1,25 +1,25 @@
 import { CourseGrid } from '@/components/common'
+import ApiButton from '@/components/course/ButtonApi'
 import Course from '@/components/course/Course'
 import Heading from '@/components/typography/Heading'
-import createUser from '@/lib/actions/user.actions'
+import { getCourse } from '@/lib/actions/courses.actions'
+import { createUser } from '@/lib/actions/user.actions'
 import React from 'react'
 
-const  pages = async () => {
-  const user = await createUser({
-    clerkId : "12345",
-    email : "thuha@gmail.com",
-    username : "thuha"
-  })
+const Pages = async () => {
+  const course = await getCourse() || [];
   return (
     <div>
       <Heading>Khám phá</Heading>
       <CourseGrid>
-          <Course></Course>
-          <Course></Course>
-          <Course></Course>
+        {
+          course?.length > 0 && course.map((courseItem, index) => (
+            <Course key={index} data={courseItem}/>
+          ))
+        }
       </CourseGrid>
     </div>
   )
 }
 
-export default pages
+export default Pages

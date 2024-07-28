@@ -7,3 +7,5 @@ export {default as IconOrder} from "@/icons/IconOrder";
 export {default as IconStar} from "@/icons/IconStar";
 export {default as IconEye} from "@/icons/IconEye";
 export {default as IconClock} from "@/icons/IconClock";
+export {default as IconCart} from "@/icons/IconCart";
+export {default as IconTrash} from "@/icons/IconTrash";

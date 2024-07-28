@@ -1,16 +1,18 @@
+import { ICourse } from '@/database/course.model';
 import { IconClock, IconEye, IconStar } from '@/icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import AddToCart from './AddToCart';
 
-const Course = () => {
+const Course = ({data} : {data : ICourse}) => {
     const courseInfo = [
         {
-            title : "1000",
+            title : data.view,
             icon : (className ?: string ) => <IconEye className= {className}></IconEye>
         },
         {
-            title : "5.0",
+            title : data.rating[0],
             icon : (className ?: string ) => <IconStar className= {className}></IconStar>
         },
         {
@@ -20,9 +22,9 @@ const Course = () => {
     ];
   return (
     <div className="course-item bg-white dark:bg-grayDarker dark:border-opacity-10 border border-gray-200 p-4 rounded-lg">
-        <Link href="/" className="block h-[180px] relative">
+        <Link href={`/course/${data.slug}`} className="block h-[180px] relative">
             <Image 
-                src="https://cdn.dribbble.com/users/1307006/screenshots/5868358/media/f8294af227dc8cddbe4146bd4fc30752.png?resize=1000x750&vertical=center" 
+                src= {data.image}
                 alt="image"
                 width={300}
                 height={200}
@@ -30,13 +32,13 @@ const Course = () => {
                 sizes='@media (min-width : 640px) : 300px , 100vw'
                 priority
             />
-            <span className='
-            absolute inline-block px-3 py-1 top-3 right-3 z-10 bg-green-500 rounded-full text-white font-medium text-xs'>
+            {/* <span className='
+            absolute inline-block px-3 py-1 top-3 right-3 z-10 bg-green-600 rounded-full text-white font-medium text-xs'>
                 New
-            </span>
+            </span> */}
         </Link>
         <div className="py-4 text-lg">
-            <h3 className='font-bold'>Khóa học NextJs Pro - Xây dụng hệ thống E-leaning</h3>
+            <h3 className='font-bold max-w-xs overflow-hidden whitespace-nowrap text-ellipsis'>{data.title}</h3>
         </div>
         <div className="flex items-center gap-3 mb-4 text-xs text-gray-500 dark:text-grayDark">
             {courseInfo.map((item, index) => (
@@ -45,9 +47,12 @@ const Course = () => {
                     <span>{item.title}</span>
                 </div>
             ))}
-            <span className='font-bold text-primary ml-auto text-base'>100.000đ</span>
+            <span className='font-bold text-primary ml-auto text-base'>{data.price}</span>
         </div>
-        <Link href= "/" className='flex items-center justify-center w-full h-12 rounded-lg text-white font-bold bg-primary '>Xem chi tiết</Link>
+       <div className="flex items-center gap-3">
+          <Link href= {`/course/${data.slug}`} className='flex items-center justify-center  h-12 rounded-lg text-white font-bold bg-primary w-full '>Xem chi tiết</Link>
+          <AddToCart course={data}/>
+       </div>
     </div>
   );
 };
