@@ -10,9 +10,10 @@ const Cart = () => {
     const [cart, setCart] = React.useState([]);
 
     React.useEffect(() => {
-      const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-      setCart(storedCart);
-    }, []);
+      const storedCart = localStorage.getItem('cart');
+      const parsedCart = storedCart ? JSON.parse(storedCart) : [];
+      setCart(parsedCart);
+    }, []);    
   
     const deleteCartItem = (index : number) => {
       const updatedCart = [...cart];
