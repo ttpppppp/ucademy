@@ -47,7 +47,7 @@ const Course = ({data} : {data : ICourse}) => {
                     <span>{item.title}</span>
                 </div>
             ))}
-            <span className='font-bold text-primary ml-auto text-base'>{data.price}</span>
+            <span className='font-bold text-primary ml-auto text-base'>{data.price.toLocaleString('vi-VN')}đ</span>
         </div>
        <div className="flex items-center gap-3">
           <Link href= {`/course/${data.slug}`} className='flex items-center justify-center  h-12 rounded-lg text-white font-bold bg-primary w-full '>Xem chi tiết</Link>

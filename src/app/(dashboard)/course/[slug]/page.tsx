@@ -34,7 +34,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
       <div className="bg-white rounded-lg p-5">
        <div className="flex items-center gap-3">
         <strong className='text-primary'>300.000đ</strong>
-        <span className='text-slate-500 line-through'>1.000.000</span>
+        <span className='text-slate-500 line-through'>{data.price.toLocaleString('vi-VN')}</span>
        </div>
        <Button className='w-full bg-primary my-2'>Mua khóa học</Button>
       </div>

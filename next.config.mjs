@@ -32,6 +32,12 @@ const nextConfig = {
           port: '',
           pathname: '/**',
         },
+        {
+          protocol: 'https',
+          hostname: 'tuyendung.kfcvietnam.com.vn',
+          port: '',
+          pathname: '/**',
+        },
       ],
     },
   };

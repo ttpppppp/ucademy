@@ -18,7 +18,12 @@ type TcreateUserParam = {
 type TcreateCourse = {
     title : string,
     slug : string,
-    image ?: string
+    image ?: string,
+    price ?: number,
+    sale_price ?: number,
+    intro_url ?: string,
+    description ?: string,
+    view ?: number
 }
 type TUpdateCourse = {
     slug : string,

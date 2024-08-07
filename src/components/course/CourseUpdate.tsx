@@ -22,7 +22,8 @@ import { toast } from "react-toastify"
 const formSchema = z.object({
     title : z.string().min(10 , "Tên khóa học ít nhất 10 ký tự"),
     slug : z.string().optional(),
-
+    image : z.string().optional(),
+    price : z.coerce.number(),
 });
 
 function CourseUpdate({courseData} : {courseData : ICourse}) {
@@ -34,7 +35,9 @@ function CourseUpdate({courseData} : {courseData : ICourse}) {
         resolver: zodResolver(formSchema),
         defaultValues: {
             title : courseData.title,
-            slug : courseData.slug
+            slug : courseData.slug,
+            image : courseData.image,
+            price : courseData.price
         },
       })
      
@@ -75,6 +78,32 @@ function CourseUpdate({courseData} : {courseData : ICourse}) {
               <FormLabel>Đường dẫn khóa học</FormLabel>
               <FormControl>
                 <Input placeholder="khoa-hoc-lap-trinh" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="image"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Đường dẫn hình ảnh khóa học</FormLabel>
+              <FormControl>
+                <Input placeholder="" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="price"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Giá khóa học</FormLabel>
+              <FormControl>
+                <Input type="number" placeholder="" {...field}/>
               </FormControl>
               <FormMessage />
             </FormItem>
